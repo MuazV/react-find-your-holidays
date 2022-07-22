@@ -35,7 +35,6 @@ export default function SimpleContainer() {
     setFlag(data)
   }
 
-
   const handleSubmit = (e) => {
     e.preventDefault()
     getData()
@@ -46,24 +45,26 @@ export default function SimpleContainer() {
     <Container maxWidth="md" sx={{ marginTop: "1rem" }}>
       <CssBaseline />
       <Box
-        sx={{ bgcolor: "#cfe8fc", height: "20vh", padding: "1rem" }}
+        sx={{ bgcolor: "#A1A2A6", height: "20vh", padding: "1rem", color:"#F0F0F2" }}
         component="form" onSubmit={handleSubmit}
       >
         <TextField
-          id="outlined-basic"
           placeholder="Please Enter Country..."
-          variant="outlined"
+          variant="filled"
           type="search"
+          InputProps={{ disableUnderline: true }}
           onChange={(e) => setCountry(e.target.value)}
         />
         <TextField
-          id="outlined-basic"
           placeholder="Please Enter Year..."
-          variant="outlined"
+          variant="filled"
           type="number"
+          InputProps={{ disableUnderline: true }}
+          
+          sx={{marginLeft:"20px", marginRight:"20px"}}
           onChange={(e) => setYear(e.target.value)}
         />
-      <Button variant="contained" type="submit">Search</Button>
+      <Button variant="standard" type="submit" sx={{border:"1px solid #3B3C40", marginTop:"10px", color:"#F0F0F2", "&:hover":{background:'#6E6F73'}}} >Search</Button>
       </Box>
       <Box>
         <Typography variant="h3" component="h3" align="center">
@@ -95,8 +96,8 @@ export default function SimpleContainer() {
               key={urlid}
               sx={{backgroundColor:
                 index % 2 
-                    ? "lightgray"
-                    : "white",}}
+                    ? "#A1A2A6"
+                    : "#F0F0F2",}}
             >
               <TableCell component="th" scope="row">
                 {ctname}
