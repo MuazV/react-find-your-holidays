@@ -3,7 +3,7 @@ import Router from "./router/Router";
 
 function App() {
   return (
-    <div>
+    <div style={{backgroundColor: "lightblue"}}>
    <Router/>
     </div>
   );

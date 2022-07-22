@@ -14,14 +14,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {useInput} from '../hooks/useInput';
 
 export default function SimpleContainer() {
-  const [year, setYear] = useState("");
-  const [country, setCountry] = useState("");
   const [holidays, setHolidays] = useState([]);
   const [flag, setFlag] =useState([])
+  const [inputs, setInputs] = useInput({year: "", country: ""})
 
-  let url = `https://calendarific.com/api/v2/holidays?&api_key=47bbad09ac6713178e45e53a49b019fceaac2750&country=${country}&year=${year}&type=national`
+
+  let url = `https://calendarific.com/api/v2/holidays?&api_key=47bbad09ac6713178e45e53a49b019fceaac2750&country=${inputs.country}&year=${inputs.year}&type=national`
 
   let url2 = `https://restcountries.com/v3.1/all`
 
@@ -54,26 +55,30 @@ export default function SimpleContainer() {
           placeholder="Please Enter Country..."
           variant="outlined"
           type="search"
-          onChange={(e) => setCountry(e.target.value)}
+          name="country"
+          value={inputs.country}
+          onChange={setInputs}
         />
         <TextField
           id="outlined-basic"
           placeholder="Please Enter Year..."
           variant="outlined"
           type="number"
-          onChange={(e) => setYear(e.target.value)}
+          name="year"
+          value={inputs.year}
+          onChange={setInputs}
         />
       <Button variant="contained" type="submit">Search</Button>
       </Box>
       <Box>
         <Typography variant="h3" component="h3" align="center">
-        {year}
+        {inputs.year}
         </Typography>
         <Typography variant="h4" component="h4" align="center">
-          Holidays for {country.toUpperCase()}
+          Holidays for {inputs.country}
         </Typography>
         <Typography sx={{textAlign:"center"}}>
-        <img src={flag?.filter((c) => c.altSpellings[0] === country.toUpperCase())[0]?.flags.png} alt="" />
+        <img src={flag?.filter((c) => c.altSpellings[0] === inputs.country)[0]?.flags.png} alt="" />
         </Typography>
         <Grid container>
                 <TableContainer component={Paper}>
