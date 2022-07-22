@@ -1,11 +1,13 @@
-import {useState} from "react";
+import {useState} from 'react'
 
-export const useInput = (params) => {
-    const [inputs, setInputs] = useState({params});
+const useInput = (params) => {
+  const [inputs, setInputs] = useState({params})
 
-    const handleChange = (event) => {
-        setInputs({...inputs, [event.target.name]: event.target.value})
-      };
+  const handleChange = (e) => {
+    setInputs({...inputs, [e.target.name]: e.target.value})
+  }
 
-    return [inputs, handleChange]
+  return [inputs, handleChange]
 }
+
+export default useInput
