@@ -79,7 +79,6 @@ export default function SimpleContainer() {
             color: "#F0F0F2",
             "&:hover": { background: "#6E6F73" },
           }}
-          disabled={!inputs.country || !inputs.year}
         >
           Search
         </Button>
